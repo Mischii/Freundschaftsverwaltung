@@ -14,7 +14,7 @@ namespace M120Projekt
         public static void FreundCreate()
         {
             Debug.Print("--- FreundCreate ---");
-            // KlasseA
+            // Freund
             Data.Freund freund1 = new Data.Freund();
             freund1.Vorname = "Lisa";
             freund1.Nachname = "Friedli";

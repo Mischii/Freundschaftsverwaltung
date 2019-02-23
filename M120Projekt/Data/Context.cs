@@ -17,6 +17,9 @@ namespace M120Projekt.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Freund>().ToTable("Freund"); // Damit kein "s" angehängt wird an Tabelle
+
+            modelBuilder.Properties<DateTime>().Configure(c => c.HasColumnType("datetime2"));
+            //damit bei allen DateTime-Attributen auf der DB datetime2 statt datetime verwendet wird
         }
         public DbSet<Freund> Freund { get; set; }
     }
