@@ -61,7 +61,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="FreundAktualisieren.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FreundDetailAnsicht.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FreundErfassen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FreundUebersicht.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -73,8 +85,17 @@
     <Compile Include="Data\Global.cs" />
     <Compile Include="Data\Freund.cs" />
     <Compile Include="Data\Context.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="FreundAktualisieren.xaml.cs">
+      <DependentUpon>FreundAktualisieren.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FreundDetailAnsicht.xaml.cs">
+      <DependentUpon>FreundDetailAnsicht.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FreundErfassen.xaml.cs">
+      <DependentUpon>FreundErfassen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FreundUebersicht.xaml.cs">
+      <DependentUpon>FreundUebersicht.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

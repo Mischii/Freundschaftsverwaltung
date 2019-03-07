@@ -1,0 +1,48 @@
+﻿<Window x:Class="M120Projekt.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:M120Projekt"
+        mc:Ignorable="d"
+        Title="Freunde Übersicht" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <!-- Erste Reihe besteht aus der Suchbar -->
+        <TextBox Name="sucheTextBox" Grid.Column="1" Grid.Row="0" Margin="10">Hier ihre suche eingeben</TextBox>
+        <Label Name="sucheLable" Grid.Column="2" Grid.Row="0" Margin="10">Suche</Label>
+
+        <!-- Zweite Reihe besteht aus einer Auflistung von Freunden -->
+        <Label Name="nachnameLable" Grid.Column="1" Grid.Row="1" Margin="10">Nachname</Label>
+        <Label Name="vornameLable" Grid.Column="2" Grid.Row="1" Margin="10">Vorname</Label>
+        <Label Name="geburtsdatumLable" Grid.Column="3" Grid.Row="1" Margin="10">Geburtsdatum</Label>
+        <Label Name="adresseLable" Grid.Column="4" Grid.Row="1" Margin="10">Adresse</Label>
+
+        <Label Name="nachnameLable1" Grid.Column="1" Grid.Row="1" Margin="10,30,10,5">Friedli</Label>
+        <Label Name="vornameLable1" Grid.Column="2" Grid.Row="1" Margin="10,30,10,5">Lisa</Label>
+        <Label Name="geburtsdatumLable1" Grid.Column="3" Grid.Row="1" Margin="10,30,10,5">12.07.1998</Label>
+        <Label Name="adresseLable1" Grid.Column="4" Grid.Row="1" Margin="10,30,10,5">Blumenweg 5</Label>
+        <Button Name="detail1" Grid.Column="5" Grid.Row="1" Margin="10,33.5,18.5,200" Width="60" Height="20" >Detail</Button>
+        <Button Name="edit1" Grid.Column="6" Grid.Row="1" Margin="10,33.5,18.5,200" Width="60" Height="20" >Edit</Button>
+
+        <!-- Dritte Reihe besteht aus den Buttons zum erstellen eines Freundes und dem schliessen der Applikation -->
+        <Button Name="freundErfassen" Grid.Column="1" Grid.Row="2" Width="100" Height="20" >Freund erfassen</Button>
+        <Button Name="programmSchliesen" Grid.Column="5" Grid.Row="2" Width="120" Height="20" >Programm schliessen</Button>
+
+    </Grid>
+</Window>

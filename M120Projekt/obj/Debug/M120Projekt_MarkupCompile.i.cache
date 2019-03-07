@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Development\M120Projekt\M120Projekt\obj\Debug\
+E:\meineDateien\2Semester\120\FreundschaftsVerwaltung\Development\M120Projekt\M120Projekt\obj\Debug\
 M120Projekt
 none
 false
 DEBUG;TRACE
-C:\Development\M120Projekt\M120Projekt\App.xaml
-11151548125
+E:\meineDateien\2Semester\120\FreundschaftsVerwaltung\Development\M120Projekt\M120Projekt\App.xaml
+4-432375255
 
-14-1586041499
-16-466417106
-MainWindow.xaml;
+171297507365
+16-289005496
+FreundAktualisieren.xaml;FreundDetailAnsicht.xaml;FreundErfassen.xaml;FreundUebersicht.xaml;
 
-False
+True
 
