@@ -7,6 +7,57 @@
         mc:Ignorable="d"
         Title="FreundAktualisieren" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Haubtteil besteht aus dem aktualisieren der Angaben zu einem Freunde -->
+        <Label Name="nachname" Grid.Column="1" Grid.Row="1">Nachname:</Label>
+        <Label Name="vorname" Grid.Column="1" Grid.Row="2">Vorname:</Label>
+        <Label Name="adresse" Grid.Column="1" Grid.Row="3">Adresse:</Label>
+        <Label Name="plz" Grid.Column="1" Grid.Row="4">PLZ:</Label>
+        <Label Name="ort" Grid.Column="1" Grid.Row="5">Ort:</Label>
+        <Label Name="geburtsdatum" Grid.Column="1" Grid.Row="6">Geburtsdatum:</Label>
+        <Label Name="handynummer" Grid.Column="1" Grid.Row="7">Handynummer:</Label>
+        <Label Name="email" Grid.Column="1" Grid.Row="8">Email:</Label>
+        <Label Name="beziehungsstatus" Grid.Column="1" Grid.Row="9">Beziehungsstatus:</Label>
+        <Label Name="beziehung" Grid.Column="1" Grid.Row="10">Beziehung:</Label>
+        <Label Name="befreundetSeit" Grid.Column="1" Grid.Row="11">Befraundet seid:</Label>
+
+        <TextBox Name="uName" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Margin="5"></TextBox>
+        <TextBox Name="uVorname" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2" Margin="5"></TextBox>
+        <TextBox Name="uAdresse" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2" Margin="5"></TextBox>
+        <TextBox Name="uPlz" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2" Margin="5"></TextBox>
+        <TextBox Name="uOrt" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" Margin="5"></TextBox>
+        <TextBox Name="uGeburtsdatum" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2" Margin="5"></TextBox>
+        <TextBox Name="uHandynummer" Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2" Margin="5"></TextBox>
+        <TextBox Name="uEmail" Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="2" Margin="5"></TextBox>
+        <RadioButton Name="uVergeben" Grid.Column="2" Grid.Row="9" Margin="5">Vergeben</RadioButton>
+        <RadioButton Name="uSingle" Grid.Column="3" Grid.Row="9" Margin="5">Single</RadioButton>
+        <TextBox Name="uBeziehung" Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="2" Margin="5"></TextBox>
+        <TextBox Name="uBefreundetSeit" Grid.Column="2" Grid.Row="11" Grid.ColumnSpan="2" Margin="5"></TextBox>
+
+        <!-- Fusszeile besteht aus den Buttons zum abbrechen und speichern der Änderung -->
+        <Button Name="freundErfassen" Grid.Column="0" Grid.Row="12" Grid.ColumnSpan="2" Width="100" Height="20" >abbrechen</Button>
+        <Button Name="programmSchliesen" Grid.Column="2" Grid.Row="12" Grid.ColumnSpan="2" Width="120" Height="20" >Änderung speichern</Button>
     </Grid>
 </Window>
