@@ -23,7 +23,7 @@ namespace M120Projekt
             freund1.Ort = "Bettenhausen";
             freund1.Geburtsdatum = new DateTime(1998,07,12);
             freund1.Handynummer = "079 878 99 88";
-            freund1.Email = "lisa.friedlic@gamil.com";
+            freund1.Email = "lisa.friedlic@gmail.com";
             freund1.Beziehungsstatus = false;
             freund1.Beziehung = "Freund / Freundin";
             freund1.BefreundetSeit = new DateTime(2011,09,15);

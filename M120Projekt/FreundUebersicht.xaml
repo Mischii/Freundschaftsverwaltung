@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:M120Projekt"
         mc:Ignorable="d"
+        MinWidth="350"
         Title="Freunde Übersicht" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
