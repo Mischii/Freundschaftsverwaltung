@@ -11,6 +11,7 @@ namespace M120Projekt.Data
 {
     public class Freund
     {
+
         #region Datenbankschicht
         [Key]
         public Int64 FreundID { get; set; }
