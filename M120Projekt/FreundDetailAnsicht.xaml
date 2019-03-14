@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:M120Projekt"
         mc:Ignorable="d"
         MinWidth="350"
+        MinHeight="400"
         Title="FreundDetailAnsicht" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>

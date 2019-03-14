@@ -22,6 +22,12 @@ namespace M120Projekt
         public FreundAktualisieren()
         {
             InitializeComponent();
+            //setzt die werte für das DropDown
+            uBeziehung.Items.Add("Freund / Freundin");
+            uBeziehung.Items.Add("Vater / Mutter");
+            uBeziehung.Items.Add("Bruder / Schwester");
+            uBeziehung.Items.Add("Verwante");
+            uBeziehung.Items.Add("Kollege / Kollegin");
         }
     }
 }

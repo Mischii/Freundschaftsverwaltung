@@ -34,5 +34,16 @@ namespace M120Projekt
             APIDemo.FruendRead();
             //APIDemo.FreundDelete();
         }
+
+        private void ProgrammSchliesen_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void FreundErfassen_Click(object sender, RoutedEventArgs e)
+        {
+            FreundErstellen freundErstellen = new FreundErstellen();
+            freundErstellen.Show();
+        }
     }
 }

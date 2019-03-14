@@ -22,6 +22,12 @@ namespace M120Projekt
         public FreundErstellen()
         {
             InitializeComponent();
+            //setzt die werte für das DropDown
+            iBeziehung.Items.Add("Freund / Freundin");
+            iBeziehung.Items.Add("Vater / Mutter");
+            iBeziehung.Items.Add("Bruder / Schwester");
+            iBeziehung.Items.Add("Verwante");
+            iBeziehung.Items.Add("Kollege / Kollegin");
         }
     }
 }
