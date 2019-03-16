@@ -23,5 +23,16 @@ namespace M120Projekt
         {
             InitializeComponent();
         }
+
+        private void ProgrammSchliesen_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void FreundErfassen_Click(object sender, RoutedEventArgs e)
+        {
+            //freund aus db löschen
+            this.Close();
+        }
     }
 }

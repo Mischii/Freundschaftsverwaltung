@@ -29,5 +29,16 @@ namespace M120Projekt
             iBeziehung.Items.Add("Verwante");
             iBeziehung.Items.Add("Kollege / Kollegin");
         }
+
+        private void FreundErfassen_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ProgrammSchliesen_Click(object sender, RoutedEventArgs e)
+        {
+            //save
+            this.Close();
+        }
     }
 }
