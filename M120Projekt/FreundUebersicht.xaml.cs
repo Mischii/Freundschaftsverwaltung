@@ -42,8 +42,8 @@ namespace M120Projekt
 
         private void FreundErfassen_Click(object sender, RoutedEventArgs e)
         {
-            FreundErstellen freundErstellen = new FreundErstellen();
-            freundErstellen.Show();
+            //FreundErstellen freundErstellen = new FreundErstellen();
+            //freundErstellen.Show();
         }
     }
 }

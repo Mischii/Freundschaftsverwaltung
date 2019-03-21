@@ -17,22 +17,22 @@ namespace M120Projekt
     /// <summary>
     /// Interaktionslogik für FreundDetailAnsicht.xaml
     /// </summary>
-    public partial class FreundDetailAnsicht : Window
+    public partial class FreundDetailAnsicht : UserControl
     {
         public FreundDetailAnsicht()
         {
             InitializeComponent();
         }
 
-        private void ProgrammSchliesen_Click(object sender, RoutedEventArgs e)
+        private void Schliesen_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //this.Close();
         }
 
-        private void FreundErfassen_Click(object sender, RoutedEventArgs e)
+        private void FreundLoeschen_Click(object sender, RoutedEventArgs e)
         {
             //freund aus db löschen
-            this.Close();
+            //this.Close();
         }
     }
 }
