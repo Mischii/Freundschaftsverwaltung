@@ -17,7 +17,7 @@ namespace M120Projekt
     /// <summary>
     /// Interaktionslogik für FreundErstellen.xaml
     /// </summary>
-    public partial class FreundErstellen : UserControl
+    public partial class FreundErstellen : Window
     {
         public FreundErstellen()
         {
@@ -28,17 +28,19 @@ namespace M120Projekt
             iBeziehung.Items.Add("Bruder / Schwester");
             iBeziehung.Items.Add("Verwante");
             iBeziehung.Items.Add("Kollege / Kollegin");
+
+
         }
 
         private void Abbrechen_Click(object sender, RoutedEventArgs e)
         {
-            //this.Close();
+            this.Close();
         }
 
         private void FreundSpeichern_Click(object sender, RoutedEventArgs e)
         {
             //save
-            //this.Close();
+            this.Close();
         }
     }
 }

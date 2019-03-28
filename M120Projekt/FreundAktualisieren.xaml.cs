@@ -17,7 +17,7 @@ namespace M120Projekt
     /// <summary>
     /// Interaktionslogik für FreundAktualisieren.xaml
     /// </summary>
-    public partial class FreundAktualisieren : UserControl
+    public partial class FreundAktualisieren : Window
     {
         public FreundAktualisieren()
         {
@@ -32,13 +32,13 @@ namespace M120Projekt
 
         private void Abbrechen_Click(object sender, RoutedEventArgs e)
         {
-            //this.Close();
+            this.Close();
         }
 
         private void AenderungSpeichern_Click(object sender, RoutedEventArgs e)
         {
             //save
-            //this.Close();
+            this.Close();
         }
     }
 }
