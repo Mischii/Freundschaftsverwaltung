@@ -25,7 +25,6 @@ namespace M120Projekt.Data
         public Int64 PLZ { get; set; }
         [Required]
         public String Ort { get; set; }
-        [Required]
         public DateTime Geburtsdatum { get; set; }
         public String Handynummer { get; set; }
         public String Email { get; set; }
