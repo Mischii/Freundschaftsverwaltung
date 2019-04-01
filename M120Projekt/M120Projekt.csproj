@@ -61,6 +61,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="UserControls\TextBoxMitValidierung.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FreundAktualisieren.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -85,6 +89,9 @@
     <Compile Include="Data\Global.cs" />
     <Compile Include="Data\Freund.cs" />
     <Compile Include="Data\Context.cs" />
+    <Compile Include="UserControls\TextBoxMitValidierung.xaml.cs">
+      <DependentUpon>TextBoxMitValidierung.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FreundAktualisieren.xaml.cs">
       <DependentUpon>FreundAktualisieren.xaml</DependentUpon>
     </Compile>
@@ -128,7 +135,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Windows\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="images\search-icon.png" />
   </ItemGroup>

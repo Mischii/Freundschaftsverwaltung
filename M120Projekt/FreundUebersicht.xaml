@@ -11,7 +11,7 @@
 
     <Grid>
         <Grid.Resources>
-            <Image x:Key="searchIcon" Source="images/search-icon.png"/>
+            <Image x:Key="searchIcon" Source="../images/search-icon.png"/>
         </Grid.Resources>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>

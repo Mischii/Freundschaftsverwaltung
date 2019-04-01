@@ -30,6 +30,10 @@ namespace M120Projekt
             iBeziehung.Items.Add("Kollege / Kollegin");
 
 
+            this.iName.SetRegex(@"([A-Za-zÖÄÜÈÉöäüèé]{2,})");
+            this.iName.SetFehlerKommentar("Buchstaben min. 2");
+            this.iName.SetKorrekterKommentar("korrekt");
+
         }
 
         private void Abbrechen_Click(object sender, RoutedEventArgs e)
