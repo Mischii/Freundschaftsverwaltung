@@ -29,10 +29,45 @@ namespace M120Projekt
             iBeziehung.Items.Add("Verwante");
             iBeziehung.Items.Add("Kollege / Kollegin");
 
-
-            this.iName.SetRegex(@"([A-Za-zÖÄÜÈÉöäüèé]{2,})");
-            this.iName.SetFehlerKommentar("Buchstaben min. 2");
+            //Name
+            this.iName.SetRegex(@"(^[A-Za-zÖÄÜÈÉöäüèé]{2,}$)");
+            this.iName.SetFehlerKommentar("min. 2 Buchstaben");
             this.iName.SetKorrekterKommentar("korrekt");
+            this.iName.pflichtfeld = true;
+
+            //Vorname
+            this.iVorname.SetRegex(@"(^[A-Za-zÖÄÜÈÉöäüèé]{2,}$)");
+            this.iVorname.SetFehlerKommentar("min. 2 Buchstaben");
+            this.iVorname.SetKorrekterKommentar("korrekt");
+            this.iVorname.pflichtfeld = true;
+
+            //Adresse
+            this.iAdresse.SetRegex(@"(^[A-Za-zÖÄÜÈÉöäüèé]{2,}[\s]*[0-9]*$)");
+            this.iAdresse.SetFehlerKommentar("Buchstaben, optional Zahl");
+            this.iAdresse.SetKorrekterKommentar("korrekt");
+            this.iAdresse.pflichtfeld = true;
+
+            //Plz
+            this.iPlz.SetRegex(@"(^[0-9]{4}$)");
+            this.iPlz.SetFehlerKommentar("vier Zahlen");
+            this.iPlz.SetKorrekterKommentar("korrekt");
+            this.iPlz.pflichtfeld = true;
+
+            //Ort
+            this.iOrt.SetRegex(@"(^[A-Za-zÖÄÜÈÉöäüèé]{2,}$)");
+            this.iOrt.SetFehlerKommentar("min. 2 Buchstaben");
+            this.iOrt.SetKorrekterKommentar("korrekt");
+            this.iOrt.pflichtfeld = true;
+
+            //Handynummer
+            this.iHandynummer.SetRegex(@"(^[+]?[0-9]{0,3}[\s]*[0-9]{1,3}[\s]*[0-9]{1,3}[\s]*[0-9]{1,2}[\s]*[0-9]{1,2}$)");
+            this.iHandynummer.SetFehlerKommentar("+, Leerschlag und Zahlen");
+            this.iHandynummer.SetKorrekterKommentar("korrekt");
+
+            //Email
+            this.iEmail.SetRegex(@"(^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$)");
+            this.iEmail.SetFehlerKommentar("gültige E-Mailadresse");
+            this.iEmail.SetKorrekterKommentar("korrekt");
 
         }
 

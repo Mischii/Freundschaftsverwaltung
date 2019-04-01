@@ -28,10 +28,12 @@ namespace M120Projekt.UserControls
         private string fehlerKommentar = "falsche Eingabe";
         private string korrekterKommentar = "korrekte Eingabe";
         private string regex = "";
+        public bool pflichtfeld { get; set; }
 
         public TextBoxMitValidierung()
         {
             InitializeComponent();
+            this.pflichtfeld = false;
         }
 
         public void SetRegex(string regex)
@@ -51,25 +53,48 @@ namespace M120Projekt.UserControls
 
         public bool Ueberpruefung()
         {
-            if (Regex.IsMatch(this.validierteTextBox.Text, this.regex))
+            if (this.pflichtfeld && this.IsEmpty())
             {
-                // korrekte Eingabe
-                this.kommentarLabel.Foreground = korrekteFarbe;
-                this.kommentarLabel.Content = this.korrekterKommentar;
-                return true;
-            }
-            else
-            {
-                // falsche Eingabe
                 this.kommentarLabel.Foreground = fehlerFarbe;
                 this.kommentarLabel.Content = this.fehlerKommentar;
                 return false;
-            }            
+            }
+            if (!IsEmpty())
+            {
+                if (Regex.IsMatch(this.validierteTextBox.Text, this.regex))
+                {
+                    // korrekte Eingabe
+                    this.kommentarLabel.Foreground = korrekteFarbe;
+                    this.kommentarLabel.Content = this.korrekterKommentar;
+                    return true;
+                }
+                else
+                {
+                    // falsche Eingabe
+                    this.kommentarLabel.Foreground = fehlerFarbe;
+                    this.kommentarLabel.Content = this.fehlerKommentar;
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private void Eingabe_TextChanged(object sender, TextChangedEventArgs e)
         {
             this.Ueberpruefung();
+        }
+
+        public string GetEingabe()
+        {
+            return this.validierteTextBox.Text;
+        }
+
+        private bool IsEmpty()
+        {
+            return this.validierteTextBox.Text == null || this.validierteTextBox.Text == "";
         }
     }
 }
