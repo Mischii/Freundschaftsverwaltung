@@ -23,6 +23,7 @@ namespace M120Projekt
         {
             InitializeComponent();
             //setzt die werte für das DropDown
+            iBeziehung.Items.Add("");
             iBeziehung.Items.Add("Freund / Freundin");
             iBeziehung.Items.Add("Vater / Mutter");
             iBeziehung.Items.Add("Bruder / Schwester");
@@ -60,7 +61,7 @@ namespace M120Projekt
             this.iOrt.pflichtfeld = true;
 
             //Handynummer
-            this.iHandynummer.SetRegex(@"(^[+]?[0-9]{0,3}[\s]*[0-9]{1,3}[\s]*[0-9]{1,3}[\s]*[0-9]{1,2}[\s]*[0-9]{1,2}$)");
+            this.iHandynummer.SetRegex(@"(^[+]?[0-9]{0,2}[\s]*[0-9]{1,3}[\s]*[0-9]{1,3}[\s]*[0-9]{1,2}[\s]*[0-9]{1,2}$)");
             this.iHandynummer.SetFehlerKommentar("+, Leerschlag und Zahlen");
             this.iHandynummer.SetKorrekterKommentar("korrekt");
 

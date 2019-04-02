@@ -23,6 +23,7 @@ namespace M120Projekt
         {
             InitializeComponent();
             //setzt die werte für das DropDown
+            uBeziehung.Items.Add("");
             uBeziehung.Items.Add("Freund / Freundin");
             uBeziehung.Items.Add("Vater / Mutter");
             uBeziehung.Items.Add("Bruder / Schwester");
