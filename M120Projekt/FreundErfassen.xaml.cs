@@ -70,6 +70,39 @@ namespace M120Projekt
             this.iEmail.SetFehlerKommentar("gültige E-Mailadresse");
             this.iEmail.SetKorrekterKommentar("korrekt");
 
+            freundSpeichern.IsEnabled = false;
+
+        }
+
+        public void NeuerFreundSpeichern()
+        {
+            Data.Freund freund = new Data.Freund();
+            freund.Vorname = iVorname.GetEingabe();
+            freund.Nachname = iName.GetEingabe();
+            freund.Adresse = iAdresse.GetEingabe();
+            freund.PLZ = Convert.ToInt32(iPlz.GetEingabe());
+            freund.Ort = iOrt.GetEingabe();
+            if(this.iGeburtsdatum.SelectedDate != null)
+            {
+                freund.Geburtsdatum = Convert.ToDateTime(iGeburtsdatum.SelectedDate.Value);
+            }            
+            freund.Handynummer = iHandynummer.GetEingabe();
+            freund.Email = iEmail.GetEingabe();
+            if(iVergeben.IsChecked == true)
+            {
+                freund.Beziehungsstatus = true;
+            }
+            else
+            {
+                freund.Beziehungsstatus = false;
+            }
+            freund.Beziehung = Convert.ToString(iBeziehung.SelectedValue);
+            if (this.iBefreundetSeit.SelectedDate != null)
+            {
+                freund.BefreundetSeit = Convert.ToDateTime(iBefreundetSeit.SelectedDate.Value);
+            }
+
+            freund.FreundID = freund.Erstellen();
         }
 
         private void Abbrechen_Click(object sender, RoutedEventArgs e)
@@ -79,8 +112,37 @@ namespace M120Projekt
 
         private void FreundSpeichern_Click(object sender, RoutedEventArgs e)
         {
-            //save
+            NeuerFreundSpeichern();
+            MessageBox.Show( "Freund wurde erfolgreich gespeichert",
+                "Gespeicheert",
+                MessageBoxButton.OK,
+                MessageBoxImage.Asterisk);
             this.Close();
+        }
+
+        private void UberpruefeValidierung(object sender, RoutedEventArgs e)
+        {
+
+            if (this.iVorname.Ueberpruefung() && this.iName.Ueberpruefung() && this.iAdresse.Ueberpruefung()
+                && this.iPlz.Ueberpruefung() && this.iOrt.Ueberpruefung())
+            {
+                if (this.iHandynummer.GetEingabe() != "")
+                {
+                    freundSpeichern.IsEnabled = this.iHandynummer.Ueberpruefung();
+                }
+                else if (this.iEmail.GetEingabe() != "")
+                {
+                    freundSpeichern.IsEnabled = this.iEmail.Ueberpruefung();
+                }
+                else
+                {
+                    freundSpeichern.IsEnabled = true;
+                }
+            }
+            else
+            {
+                freundSpeichern.IsEnabled = false;
+            }
         }
     }
 }

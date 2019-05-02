@@ -45,16 +45,16 @@
         <Label Name="beziehung" Grid.Column="1" Grid.Row="10">Beziehung:</Label>
         <Label Name="befreundetSeit" Grid.Column="1" Grid.Row="11">Befraundet seid:</Label>
 
-        <UserControls:TextBoxMitValidierung x:Name="iName" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="3" Margin="5" />
-        <UserControls:TextBoxMitValidierung x:Name="iVorname" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" Margin="5" />
-        <UserControls:TextBoxMitValidierung x:Name="iAdresse" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" Margin="5" />
-        <UserControls:TextBoxMitValidierung x:Name="iPlz" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" Margin="5"/>
-        <UserControls:TextBoxMitValidierung x:Name="iOrt" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="3" Margin="5"/>
+        <UserControls:TextBoxMitValidierung x:Name="iName" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="3" Margin="5" LostFocus="UberpruefeValidierung"/>
+        <UserControls:TextBoxMitValidierung x:Name="iVorname" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" Margin="5" LostFocus="UberpruefeValidierung"/>
+        <UserControls:TextBoxMitValidierung x:Name="iAdresse" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" Margin="5" LostFocus="UberpruefeValidierung"/>
+        <UserControls:TextBoxMitValidierung x:Name="iPlz" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" Margin="5" LostFocus="UberpruefeValidierung"/>
+        <UserControls:TextBoxMitValidierung x:Name="iOrt" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="3" Margin="5" LostFocus="UberpruefeValidierung" />
 
         <DatePicker Name="iGeburtsdatum" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2" Margin="4.5,1.5,55.5,2" ></DatePicker>
 
-        <UserControls:TextBoxMitValidierung x:Name="iHandynummer" Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="3" Margin="5"  />
-        <UserControls:TextBoxMitValidierung x:Name="iEmail" Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="3" Margin="5"  />
+        <UserControls:TextBoxMitValidierung x:Name="iHandynummer" Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="3" Margin="5" LostFocus="UberpruefeValidierung"/>
+        <UserControls:TextBoxMitValidierung x:Name="iEmail" Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="3" Margin="5" LostFocus="UberpruefeValidierung"/>
 
         <RadioButton Name="iVergeben" GroupName="beziehungsStatus" Grid.Column="2" Grid.Row="9" Margin="5" >Vergeben</RadioButton>
         <RadioButton Name="iSingle" GroupName="beziehungsStatus" Grid.Column="3" Grid.Row="9" Margin="5" >Single</RadioButton>
