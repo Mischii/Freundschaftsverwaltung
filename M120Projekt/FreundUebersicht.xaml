@@ -21,6 +21,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="4*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
@@ -38,11 +39,53 @@
         <Button Name="detail1" Grid.Column="5" Grid.Row="1" Margin="10,33.5,18.5,200" Width="60" Height="20" >Detail</Button>
         <Button Name="edit1" Grid.Column="6" Grid.Row="1" Margin="10,33.5,18.5,200" Width="60" Height="20" >Edit</Button>
         -->
-        <ListView Name="alleFreunde" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">Platzhalter</ListView>
+        <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Margin="5" FontSize="16" Content="Nachname" />
+                <Label Grid.Column="1" Margin="5" FontSize="16" Content="Vorname"/>
+                <Label Grid.Column="2" Margin="5" FontSize="16" Content="Geburtsdatum"/>
+                <Label Grid.Column="3" Margin="5" FontSize="16" Content="Adresse"/>
+                <Label Grid.Column="2" Margin="5" FontSize="16" Content=""/>
+                <Label Grid.Column="3" Margin="5" FontSize="16" Content=""/>
+            </Grid>
+        </StackPanel>
+
+        <ListBox Name="alleFreunde" Grid.Column="1" Grid.Row="2" SelectionChanged="ListBox_SelectionChanged" AllowDrop="True" Grid.ColumnSpan="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Margin="5" FontSize="10" Text="{Binding Path=Nachname}"/>
+                            <TextBlock Grid.Column="1" Margin="5" FontSize="10" Text="{Binding Path=Vorname}"/>
+                            <TextBlock Grid.Column="2" Margin="5" FontSize="10" Text="{Binding Path=Geburtsdatum}"/>
+                            <TextBlock Grid.Column="3" Margin="5" FontSize="10" Text="{Binding Path=Adresse}"/>
+                            <Button Name="detail" Grid.Column="4" Margin="5" FontSize="10" Content="Detail" Click="DetailsAnzeigen"/>
+                            <Button Name="edit" Grid.Column="5" Margin="5" FontSize="10" Content="Edit" Click="FreundEditieren"/>
+                        </Grid>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
         <!-- Dritte Reihe besteht aus den Buttons zum erstellen eines Freundes und dem schliessen der Applikation -->
-        <Button Name="freundErfassen" Grid.Column="1" Grid.Row="2" Width="100" Height="20" Click="FreundErfassen_Click" >Freund erfassen</Button>
-        <Button Name="programmSchliesen" Grid.Column="2" Grid.Row="2" Width="120" Height="20" Click="ProgrammSchliesen_Click" >Programm schliessen</Button>
+        <Button Name="freundErfassen" Grid.Column="1" Grid.Row="3" Width="100" Height="20" Click="FreundErfassen_Click" >Freund erfassen</Button>
+        <Button Name="programmSchliesen" Grid.Column="2" Grid.Row="3" Width="120" Height="20" Click="ProgrammSchliesen_Click" >Programm schliessen</Button>
 
     </Grid>
 </Window>

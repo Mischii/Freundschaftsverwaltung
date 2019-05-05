@@ -54,7 +54,7 @@ namespace M120Projekt
             Debug.Print("--- FreundUpdate ---");
             // KlasseA ändert Attribute
             Data.Freund freund = Data.Freund.LesenID(1);
-            freund.Ort = "Freund 1 nach Update";
+            freund.Nachname = "Freund 1 nach Update";
             freund.Aktualisieren();
         }
         // Delete

@@ -107,6 +107,10 @@ namespace M120Projekt
 
         private void Abbrechen_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Das Erstellen wurde abgebrochen",
+                "Abbrechen",
+                MessageBoxButton.OK,
+                MessageBoxImage.Warning);
             this.Close();
         }
 
@@ -130,7 +134,11 @@ namespace M120Projekt
                 {
                     freundSpeichern.IsEnabled = this.iHandynummer.Ueberpruefung();
                 }
-                else if (this.iEmail.GetEingabe() != "")
+                else
+                {
+                    freundSpeichern.IsEnabled = true;
+                }
+                if (this.iEmail.GetEingabe() != "")
                 {
                     freundSpeichern.IsEnabled = this.iEmail.Ueberpruefung();
                 }
@@ -138,6 +146,7 @@ namespace M120Projekt
                 {
                     freundSpeichern.IsEnabled = true;
                 }
+
             }
             else
             {

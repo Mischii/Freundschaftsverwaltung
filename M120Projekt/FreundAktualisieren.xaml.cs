@@ -19,7 +19,8 @@ namespace M120Projekt
     /// </summary>
     public partial class FreundAktualisieren : Window
     {
-        public FreundAktualisieren()
+        int aktuellerFreund = 0;
+        public FreundAktualisieren(int freundID)
         {
             InitializeComponent();
             //setzt die werte für das DropDown
@@ -29,16 +30,76 @@ namespace M120Projekt
             uBeziehung.Items.Add("Bruder / Schwester");
             uBeziehung.Items.Add("Verwante");
             uBeziehung.Items.Add("Kollege / Kollegin");
+
+            aktuellerFreund = freundID;
+            Data.Freund freund = Data.Freund.LesenID(aktuellerFreund);
+
+            uName.Text = freund.Nachname;
+            uVorname.Text = freund.Vorname;
+            uAdresse.Text = freund.Adresse;
+            uPlz.Text = freund.PLZ.ToString();
+            uOrt.Text = freund.Ort;
+            uGeburtsdatum.Text = freund.Geburtsdatum.ToString();
+            uHandynummer.Text = freund.Handynummer;
+            uEmail.Text = freund.Email;
+            if(freund.Beziehungsstatus == true)
+            {
+                uVergeben.IsChecked = true;
+                uSingle.IsChecked = false;
+            }
+            else
+            {
+                uVergeben.IsChecked = false;
+                uSingle.IsChecked = true;
+            }
+            uBeziehung.Text = freund.Beziehung;
+            uBefreundetSeit.Text = freund.BefreundetSeit.ToString();
+
         }
 
         private void Abbrechen_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Das Erstellen wurde abgebrochen",
+                "Abbrechen",
+                MessageBoxButton.OK,
+                MessageBoxImage.Warning);
             this.Close();
         }
 
         private void AenderungSpeichern_Click(object sender, RoutedEventArgs e)
         {
-            //save
+            Data.Freund freund = Data.Freund.LesenID(aktuellerFreund);
+
+            freund.Nachname = uName.Text;
+            freund.Vorname = uVorname.Text;
+            freund.Adresse = uAdresse.Text;
+            freund.PLZ = Convert.ToInt32(uPlz.Text);
+            freund.Ort = uOrt.Text;
+            if (this.uGeburtsdatum.SelectedDate != null)
+            {
+                freund.Geburtsdatum = Convert.ToDateTime(uGeburtsdatum.SelectedDate.Value);
+            }
+            freund.Handynummer = uHandynummer.Text;
+            freund.Email = uEmail.Text;
+            if (uVergeben.IsChecked == true)
+            {
+                freund.Beziehungsstatus = true;
+            }
+            else
+            {
+                freund.Beziehungsstatus = false;
+            }
+            freund.Beziehung = Convert.ToString(uBeziehung.SelectedValue);
+            if (this.uBefreundetSeit.SelectedDate != null)
+            {
+                freund.BefreundetSeit = Convert.ToDateTime(uBefreundetSeit.SelectedDate.Value);
+            }
+
+            freund.Aktualisieren();
+            MessageBox.Show("Änderungen wurde erfolgreich gespeichert",
+                "Gespeicheert",
+                MessageBoxButton.OK,
+                MessageBoxImage.Asterisk);
             this.Close();
         }
     }

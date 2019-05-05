@@ -19,9 +19,34 @@ namespace M120Projekt
     /// </summary>
     public partial class FreundDetailAnsicht : Window
     {
-        public FreundDetailAnsicht()
+        int aktuellerFreund = 0;
+        public FreundDetailAnsicht(int freundID)
         {
             InitializeComponent();
+            aktuellerFreund = freundID;
+
+            Data.Freund freund = Data.Freund.LesenID(aktuellerFreund);
+
+            uName.Content = freund.Nachname;
+            uVorname.Content = freund.Vorname;
+            uAdresse.Content = freund.Adresse;
+            uPlz.Content = freund.PLZ.ToString();
+            uOrt.Content = freund.Ort;
+            uGeburtsdatum.Content = freund.Geburtsdatum.ToString();
+            uHandynummer.Content = freund.Handynummer;
+            uEmail.Content = freund.Email;
+            if (freund.Beziehungsstatus == true)
+            {
+                uVergeben.IsChecked = true;
+                uSingle.IsChecked = false;
+            }
+            else
+            {
+                uVergeben.IsChecked = false;
+                uSingle.IsChecked = true;
+            }
+            uBeziehung.Content = freund.Beziehung;
+            uBefreundetSeit.Content = freund.BefreundetSeit.ToString();
         }
 
         private void Schliesen_Click(object sender, RoutedEventArgs e)
@@ -31,7 +56,9 @@ namespace M120Projekt
 
         private void FreundLoeschen_Click(object sender, RoutedEventArgs e)
         {
-            //freund aus db löschen
+            MessageBox.Show("Der Freund wurde unwiederruflich gelöscht", 
+                "Gelöscht", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            Data.Freund.LesenID(aktuellerFreund).Loeschen();
             this.Close();
         }
     }
