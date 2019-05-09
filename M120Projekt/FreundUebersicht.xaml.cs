@@ -39,7 +39,6 @@ namespace M120Projekt
 
             alleFreunde.ItemsSource = freunde;
             freunde.AddRange(Freund.LesenAlle());
-
         }
 
         private void ProgrammSchliesen_Click(object sender, RoutedEventArgs e)
@@ -71,7 +70,7 @@ namespace M120Projekt
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            
         }
     }
 }

@@ -31,14 +31,6 @@
         <Label Name="sucheLable" Grid.Column="2" Grid.Row="0" Margin="20.5,20,207.5,20.5">Suche</Label>
         <Button Content="{StaticResource searchIcon}" Name="suchIcon" Grid.Column="2" Grid.Row="0" Margin="10" Width="50" Height="50" BorderBrush="White" Background="White"/>
 
-        <!-- Zweite Reihe besteht aus einer Auflistung von Freunden 
-        <Label Name="nachnameLable" Grid.Column="1" Grid.Row="1" Margin="10">Nachname</Label>
-        <Label Name="vornameLable" Grid.Column="2" Grid.Row="1" Margin="10">Vorname</Label>
-        <Label Name="geburtsdatumLable" Grid.Column="3" Grid.Row="1" Margin="10">Geburtsdatum</Label>
-        <Label Name="adresseLable" Grid.Column="4" Grid.Row="1" Margin="10">Adresse</Label>
-        <Button Name="detail1" Grid.Column="5" Grid.Row="1" Margin="10,33.5,18.5,200" Width="60" Height="20" >Detail</Button>
-        <Button Name="edit1" Grid.Column="6" Grid.Row="1" Margin="10,33.5,18.5,200" Width="60" Height="20" >Edit</Button>
-        -->
         <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
             <Grid>
                 <Grid.ColumnDefinitions>

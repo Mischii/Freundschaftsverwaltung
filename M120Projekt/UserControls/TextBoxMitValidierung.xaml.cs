@@ -92,6 +92,11 @@ namespace M120Projekt.UserControls
             return this.validierteTextBox.Text;
         }
 
+        public void SetEingabe(String text)
+        {
+            this.validierteTextBox.Text = text;
+        }
+
         private bool IsEmpty()
         {
             return this.validierteTextBox.Text == null || this.validierteTextBox.Text == "";

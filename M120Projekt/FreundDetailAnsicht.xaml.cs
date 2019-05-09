@@ -32,7 +32,7 @@ namespace M120Projekt
             uAdresse.Content = freund.Adresse;
             uPlz.Content = freund.PLZ.ToString();
             uOrt.Content = freund.Ort;
-            uGeburtsdatum.Content = freund.Geburtsdatum.ToString();
+            uGeburtsdatum.Content = freund.Geburtsdatum.ToString("dd.MM.yyyy");
             uHandynummer.Content = freund.Handynummer;
             uEmail.Content = freund.Email;
             if (freund.Beziehungsstatus == true)
@@ -46,7 +46,7 @@ namespace M120Projekt
                 uSingle.IsChecked = true;
             }
             uBeziehung.Content = freund.Beziehung;
-            uBefreundetSeit.Content = freund.BefreundetSeit.ToString();
+            uBefreundetSeit.Content = freund.BefreundetSeit.ToString("dd.MM.yyyy");
         }
 
         private void Schliesen_Click(object sender, RoutedEventArgs e)

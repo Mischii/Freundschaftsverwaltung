@@ -31,18 +31,61 @@ namespace M120Projekt
             uBeziehung.Items.Add("Verwante");
             uBeziehung.Items.Add("Kollege / Kollegin");
 
+            //Name
+            this.iName.SetRegex(@"(^[A-Za-zÖÄÜÈÉöäüèé]{2,}$)");
+            this.iName.SetFehlerKommentar("min. 2 Buchstaben");
+            this.iName.SetKorrekterKommentar("korrekt");
+            this.iName.pflichtfeld = true;
+
+            //Vorname
+            this.iVorname.SetRegex(@"(^[A-Za-zÖÄÜÈÉöäüèé]{2,}$)");
+            this.iVorname.SetFehlerKommentar("min. 2 Buchstaben");
+            this.iVorname.SetKorrekterKommentar("korrekt");
+            this.iVorname.pflichtfeld = true;
+
+            //Adresse
+            this.iAdresse.SetRegex(@"(^[A-Za-zÖÄÜÈÉöäüèé]{2,}[\s]*[0-9]*$)");
+            this.iAdresse.SetFehlerKommentar("Buchstaben, optional Zahl");
+            this.iAdresse.SetKorrekterKommentar("korrekt");
+            this.iAdresse.pflichtfeld = true;
+
+            //Plz
+            this.iPlz.SetRegex(@"(^[0-9]{4}$)");
+            this.iPlz.SetFehlerKommentar("vier Zahlen");
+            this.iPlz.SetKorrekterKommentar("korrekt");
+            this.iPlz.pflichtfeld = true;
+
+            //Ort
+            this.iOrt.SetRegex(@"(^[A-Za-zÖÄÜÈÉöäüèé]{2,}$)");
+            this.iOrt.SetFehlerKommentar("min. 2 Buchstaben");
+            this.iOrt.SetKorrekterKommentar("korrekt");
+            this.iOrt.pflichtfeld = true;
+
+            //Handynummer
+            this.iHandynummer.SetRegex(@"(^[+]?[0-9]{0,2}[\s]*[0-9]{1,3}[\s]*[0-9]{1,3}[\s]*[0-9]{1,2}[\s]*[0-9]{1,2}$)");
+            this.iHandynummer.SetFehlerKommentar("+, Leerschlag und Zahlen");
+            this.iHandynummer.SetKorrekterKommentar("korrekt");
+
+            //Email
+            this.iEmail.SetRegex(@"(^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$)");
+            this.iEmail.SetFehlerKommentar("gültige E-Mailadresse");
+            this.iEmail.SetKorrekterKommentar("korrekt");
+
+            AenderungSpeichern.IsEnabled = false;
+
+
             aktuellerFreund = freundID;
             Data.Freund freund = Data.Freund.LesenID(aktuellerFreund);
 
-            uName.Text = freund.Nachname;
-            uVorname.Text = freund.Vorname;
-            uAdresse.Text = freund.Adresse;
-            uPlz.Text = freund.PLZ.ToString();
-            uOrt.Text = freund.Ort;
-            uGeburtsdatum.Text = freund.Geburtsdatum.ToString();
-            uHandynummer.Text = freund.Handynummer;
-            uEmail.Text = freund.Email;
-            if(freund.Beziehungsstatus == true)
+            iName.SetEingabe(freund.Nachname);
+            iVorname.SetEingabe(freund.Vorname);
+            iAdresse.SetEingabe(freund.Adresse);
+            iPlz.SetEingabe(freund.PLZ.ToString());
+            iOrt.SetEingabe(freund.Ort);
+            uGeburtsdatum.SelectedDate = freund.Geburtsdatum;
+            iHandynummer.SetEingabe(freund.Handynummer);
+            iEmail.SetEingabe(freund.Email);
+            if (freund.Beziehungsstatus == true)
             {
                 uVergeben.IsChecked = true;
                 uSingle.IsChecked = false;
@@ -53,7 +96,7 @@ namespace M120Projekt
                 uSingle.IsChecked = true;
             }
             uBeziehung.Text = freund.Beziehung;
-            uBefreundetSeit.Text = freund.BefreundetSeit.ToString();
+            uBefreundetSeit.SelectedDate = freund.BefreundetSeit;
 
         }
 
@@ -69,18 +112,17 @@ namespace M120Projekt
         private void AenderungSpeichern_Click(object sender, RoutedEventArgs e)
         {
             Data.Freund freund = Data.Freund.LesenID(aktuellerFreund);
-
-            freund.Nachname = uName.Text;
-            freund.Vorname = uVorname.Text;
-            freund.Adresse = uAdresse.Text;
-            freund.PLZ = Convert.ToInt32(uPlz.Text);
-            freund.Ort = uOrt.Text;
+            freund.Nachname = iName.GetEingabe();
+            freund.Vorname = iVorname.GetEingabe();
+            freund.Adresse = iAdresse.GetEingabe();
+            freund.PLZ = Convert.ToInt32(iPlz.GetEingabe());
+            freund.Ort = iOrt.GetEingabe();
             if (this.uGeburtsdatum.SelectedDate != null)
             {
                 freund.Geburtsdatum = Convert.ToDateTime(uGeburtsdatum.SelectedDate.Value);
             }
-            freund.Handynummer = uHandynummer.Text;
-            freund.Email = uEmail.Text;
+            freund.Handynummer = iHandynummer.GetEingabe();
+            freund.Email = iEmail.GetEingabe();
             if (uVergeben.IsChecked == true)
             {
                 freund.Beziehungsstatus = true;
@@ -101,6 +143,35 @@ namespace M120Projekt
                 MessageBoxButton.OK,
                 MessageBoxImage.Asterisk);
             this.Close();
+        }
+
+        private void UberpruefeValidierung(object sender, RoutedEventArgs e)
+        {
+            if (this.iVorname.Ueberpruefung() && this.iName.Ueberpruefung() && this.iAdresse.Ueberpruefung()
+                && this.iPlz.Ueberpruefung() && this.iOrt.Ueberpruefung())
+            {
+                if (this.iHandynummer.GetEingabe() != "")
+                {
+                    AenderungSpeichern.IsEnabled = this.iHandynummer.Ueberpruefung();
+                }
+                else
+                {
+                    AenderungSpeichern.IsEnabled = true;
+                }
+                if (this.iEmail.GetEingabe() != "")
+                {
+                    AenderungSpeichern.IsEnabled = this.iEmail.Ueberpruefung();
+                }
+                else
+                {
+                    AenderungSpeichern.IsEnabled = true;
+                }
+
+            }
+            else
+            {
+                AenderungSpeichern.IsEnabled = false;
+            }
         }
     }
 }
