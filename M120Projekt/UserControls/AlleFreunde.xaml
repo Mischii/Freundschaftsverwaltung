@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="M120Projekt.UserControls.AlleFreunde"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:M120Projekt.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.Resources>
+            <Image x:Key="searchIcon" Source="../images/search-icon.png"/>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Erste Reihe besteht aus der Suchbar -->
+        <TextBox Name="sucheTextBox" Grid.Column="1" Grid.Row="0" Margin="10" FontSize="16">Hier ihre suche eingeben</TextBox>
+        <Label Name="sucheLable" Grid.Column="2" Grid.Row="0" Margin="10,10,242,10.5" FontSize="16" VerticalContentAlignment="Center">Suche</Label>
+        <Button Content="{StaticResource searchIcon}" Name="suchIcon" Grid.Column="2" Grid.Row="0" Margin="78,4,191,10.5" Height="50" BorderBrush="White" Background="White"/>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Margin="5" FontSize="16" Content="Nachname" />
+                <Label Grid.Column="1" Margin="5" FontSize="16" Content="Vorname"/>
+                <Label Grid.Column="2" Margin="5" FontSize="16" Content="Geburtsdatum"/>
+                <Label Grid.Column="3" Margin="5" FontSize="16" Content="Adresse"/>
+                <Label Grid.Column="2" Margin="5" FontSize="16" Content=""/>
+                <Label Grid.Column="3" Margin="5" FontSize="16" Content=""/>
+            </Grid>
+        </StackPanel>
+
+        <ListBox Name="alleFreunde" Grid.Column="1" Grid.Row="2"  AllowDrop="True" Grid.ColumnSpan="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Margin="5" FontSize="10" Text="{Binding Path=Nachname}" MouseLeftButtonDown="FreundEditieren"/>
+                            <TextBlock Grid.Column="1" Margin="5" FontSize="10" Text="{Binding Path=Vorname}" MouseLeftButtonDown="FreundEditieren"/>
+                            <TextBlock Grid.Column="2" Margin="5" FontSize="10" Text="{Binding Path=Geburtsdatum}" MouseLeftButtonDown="FreundEditieren"/>
+                            <TextBlock Grid.Column="3" Margin="5" FontSize="10" Text="{Binding Path=Adresse}" MouseLeftButtonDown="FreundEditieren"/>
+                        </Grid>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- Dritte Reihe besteht aus den Buttons zum erstellen eines Freundes und dem schliessen der Applikation -->
+        <Button Name="freundErfassen" Grid.Column="2" Grid.Row="0" Click="FreundErfassen_Click" Margin="167,10,25,10.5" FontSize="16">Freund erfassen</Button>
+
+    </Grid>
+</UserControl>

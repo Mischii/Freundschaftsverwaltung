@@ -1,4 +1,4 @@
-﻿<Window x:Class="M120Projekt.FreundAktualisieren" xmlns:UserControls="clr-namespace:M120Projekt.UserControls" 
+﻿<UserControl x:Class="M120Projekt.FreundAktualisieren" xmlns:UserControls="clr-namespace:M120Projekt.UserControls" 
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -62,7 +62,7 @@
         <DatePicker Name="uBefreundetSeit" Grid.Column="2" Grid.Row="11" Grid.ColumnSpan="2" Margin="5,2"></DatePicker>
 
         <!-- Fusszeile besteht aus den Buttons zum abbrechen und speichern der Änderung -->
-        <Button Name="abbrechen" Grid.Column="0" Grid.Row="12" Grid.ColumnSpan="2" Width="100" Height="20" Click="Abbrechen_Click" >abbrechen</Button>
+        <Button Name="freundLoeschen" Grid.Column="0" Grid.Row="12" Grid.ColumnSpan="2" Width="100" Height="20" Click="freundLoeschen_Click" >Freund Löschen</Button>
         <Button Name="AenderungSpeichern" Grid.Column="2" Grid.Row="12" Grid.ColumnSpan="2" Width="120" Height="20" Click="AenderungSpeichern_Click" >Änderung speichern</Button>
     </Grid>
-</Window>
+</UserControl>

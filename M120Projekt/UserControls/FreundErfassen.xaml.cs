@@ -1,4 +1,5 @@
-﻿using System;
+﻿using M120Projekt.UserControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,21 +16,22 @@ using System.Windows.Shapes;
 namespace M120Projekt
 {
     /// <summary>
-    /// Interaktionslogik für FreundAktualisieren.xaml
+    /// Interaktionslogik für FreundErstellen.xaml
     /// </summary>
-    public partial class FreundAktualisieren : Window
+    public partial class FreundErstellen : UserControl
     {
-        int aktuellerFreund = 0;
-        public FreundAktualisieren(int freundID)
+        ContentControl cc;
+        public FreundErstellen(ContentControl cc)
         {
             InitializeComponent();
+            this.cc = cc;
             //setzt die werte für das DropDown
-            uBeziehung.Items.Add("");
-            uBeziehung.Items.Add("Freund / Freundin");
-            uBeziehung.Items.Add("Vater / Mutter");
-            uBeziehung.Items.Add("Bruder / Schwester");
-            uBeziehung.Items.Add("Verwante");
-            uBeziehung.Items.Add("Kollege / Kollegin");
+            iBeziehung.Items.Add("");
+            iBeziehung.Items.Add("Freund / Freundin");
+            iBeziehung.Items.Add("Vater / Mutter");
+            iBeziehung.Items.Add("Bruder / Schwester");
+            iBeziehung.Items.Add("Verwante");
+            iBeziehung.Items.Add("Kollege / Kollegin");
 
             //Name
             this.iName.SetRegex(@"(^[A-Za-zÖÄÜÈÉöäüèé]{2,}$)");
@@ -71,33 +73,39 @@ namespace M120Projekt
             this.iEmail.SetFehlerKommentar("gültige E-Mailadresse");
             this.iEmail.SetKorrekterKommentar("korrekt");
 
-            AenderungSpeichern.IsEnabled = false;
+            freundSpeichern.IsEnabled = false;
 
+        }
 
-            aktuellerFreund = freundID;
-            Data.Freund freund = Data.Freund.LesenID(aktuellerFreund);
-
-            iName.SetEingabe(freund.Nachname);
-            iVorname.SetEingabe(freund.Vorname);
-            iAdresse.SetEingabe(freund.Adresse);
-            iPlz.SetEingabe(freund.PLZ.ToString());
-            iOrt.SetEingabe(freund.Ort);
-            uGeburtsdatum.SelectedDate = freund.Geburtsdatum;
-            iHandynummer.SetEingabe(freund.Handynummer);
-            iEmail.SetEingabe(freund.Email);
-            if (freund.Beziehungsstatus == true)
+        public void NeuerFreundSpeichern()
+        {
+            Data.Freund freund = new Data.Freund();
+            freund.Vorname = iVorname.GetEingabe();
+            freund.Nachname = iName.GetEingabe();
+            freund.Adresse = iAdresse.GetEingabe();
+            freund.PLZ = Convert.ToInt32(iPlz.GetEingabe());
+            freund.Ort = iOrt.GetEingabe();
+            if(this.iGeburtsdatum.SelectedDate != null)
             {
-                uVergeben.IsChecked = true;
-                uSingle.IsChecked = false;
+                freund.Geburtsdatum = Convert.ToDateTime(iGeburtsdatum.SelectedDate.Value);
+            }            
+            freund.Handynummer = iHandynummer.GetEingabe();
+            freund.Email = iEmail.GetEingabe();
+            if(iVergeben.IsChecked == true)
+            {
+                freund.Beziehungsstatus = true;
             }
             else
             {
-                uVergeben.IsChecked = false;
-                uSingle.IsChecked = true;
+                freund.Beziehungsstatus = false;
             }
-            uBeziehung.Text = freund.Beziehung;
-            uBefreundetSeit.SelectedDate = freund.BefreundetSeit;
+            freund.Beziehung = Convert.ToString(iBeziehung.SelectedValue);
+            if (this.iBefreundetSeit.SelectedDate != null)
+            {
+                freund.BefreundetSeit = Convert.ToDateTime(iBefreundetSeit.SelectedDate.Value);
+            }
 
+            freund.FreundID = freund.Erstellen();
         }
 
         private void Abbrechen_Click(object sender, RoutedEventArgs e)
@@ -106,71 +114,46 @@ namespace M120Projekt
                 "Abbrechen",
                 MessageBoxButton.OK,
                 MessageBoxImage.Warning);
-            this.Close();
+            cc.Content = new AlleFreunde(cc);
         }
 
-        private void AenderungSpeichern_Click(object sender, RoutedEventArgs e)
+        private void FreundSpeichern_Click(object sender, RoutedEventArgs e)
         {
-            Data.Freund freund = Data.Freund.LesenID(aktuellerFreund);
-            freund.Nachname = iName.GetEingabe();
-            freund.Vorname = iVorname.GetEingabe();
-            freund.Adresse = iAdresse.GetEingabe();
-            freund.PLZ = Convert.ToInt32(iPlz.GetEingabe());
-            freund.Ort = iOrt.GetEingabe();
-            if (this.uGeburtsdatum.SelectedDate != null)
-            {
-                freund.Geburtsdatum = Convert.ToDateTime(uGeburtsdatum.SelectedDate.Value);
-            }
-            freund.Handynummer = iHandynummer.GetEingabe();
-            freund.Email = iEmail.GetEingabe();
-            if (uVergeben.IsChecked == true)
-            {
-                freund.Beziehungsstatus = true;
-            }
-            else
-            {
-                freund.Beziehungsstatus = false;
-            }
-            freund.Beziehung = Convert.ToString(uBeziehung.SelectedValue);
-            if (this.uBefreundetSeit.SelectedDate != null)
-            {
-                freund.BefreundetSeit = Convert.ToDateTime(uBefreundetSeit.SelectedDate.Value);
-            }
-
-            freund.Aktualisieren();
-            MessageBox.Show("Änderungen wurde erfolgreich gespeichert",
+            NeuerFreundSpeichern();
+            MessageBox.Show( "Freund wurde erfolgreich gespeichert",
                 "Gespeicheert",
                 MessageBoxButton.OK,
                 MessageBoxImage.Asterisk);
-            this.Close();
+            cc.Content = new AlleFreunde(cc);
         }
 
         private void UberpruefeValidierung(object sender, RoutedEventArgs e)
         {
+
             if (this.iVorname.Ueberpruefung() && this.iName.Ueberpruefung() && this.iAdresse.Ueberpruefung()
                 && this.iPlz.Ueberpruefung() && this.iOrt.Ueberpruefung())
             {
                 if (this.iHandynummer.GetEingabe() != "")
                 {
-                    AenderungSpeichern.IsEnabled = this.iHandynummer.Ueberpruefung();
+                    freundSpeichern.IsEnabled = this.iHandynummer.Ueberpruefung();
                 }
                 else
                 {
-                    AenderungSpeichern.IsEnabled = true;
+                    freundSpeichern.IsEnabled = true;
                 }
                 if (this.iEmail.GetEingabe() != "")
                 {
-                    AenderungSpeichern.IsEnabled = this.iEmail.Ueberpruefung();
+                    freundSpeichern.IsEnabled = this.iEmail.Ueberpruefung();
                 }
                 else
                 {
-                    AenderungSpeichern.IsEnabled = true;
+                    freundSpeichern.IsEnabled = true;
                 }
 
             }
             else
             {
-                AenderungSpeichern.IsEnabled = false;
+                freundSpeichern.IsEnabled = false;
             }
         }
     }
