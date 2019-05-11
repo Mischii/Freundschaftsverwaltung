@@ -62,8 +62,9 @@ namespace M120Projekt
 
         private void FreundEditieren(object sender, RoutedEventArgs e)
         {
-            Freund freund = (Freund)(sender as Button).DataContext;
+            Freund freund = (Freund)(sender as TextBlock).DataContext;
             freundID = Convert.ToInt16(freund.FreundID);
+            
             FreundAktualisieren freundAktualisieren = new FreundAktualisieren(freundID);
             freundAktualisieren.Show();
         }
@@ -72,5 +73,6 @@ namespace M120Projekt
         {
             
         }
+
     }
 }

@@ -28,7 +28,7 @@
 
         <!-- Erste Reihe besteht aus der Suchbar -->
         <TextBox Name="sucheTextBox" Grid.Column="1" Grid.Row="0" Margin="10">Hier ihre suche eingeben</TextBox>
-        <Label Name="sucheLable" Grid.Column="2" Grid.Row="0" Margin="20.5,20,207.5,20.5">Suche</Label>
+        <Label Name="sucheLable" Grid.Column="2" Grid.Row="0" Margin="10.5,10,261.5,10.5">Suche</Label>
         <Button Content="{StaticResource searchIcon}" Name="suchIcon" Grid.Column="2" Grid.Row="0" Margin="10" Width="50" Height="50" BorderBrush="White" Background="White"/>
 
         <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
@@ -60,15 +60,11 @@
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Margin="5" FontSize="10" Text="{Binding Path=Nachname}"/>
-                            <TextBlock Grid.Column="1" Margin="5" FontSize="10" Text="{Binding Path=Vorname}"/>
-                            <TextBlock Grid.Column="2" Margin="5" FontSize="10" Text="{Binding Path=Geburtsdatum}"/>
-                            <TextBlock Grid.Column="3" Margin="5" FontSize="10" Text="{Binding Path=Adresse}"/>
-                            <Button Name="detail" Grid.Column="4" Margin="5" FontSize="10" Content="Detail" Click="DetailsAnzeigen"/>
-                            <Button Name="edit" Grid.Column="5" Margin="5" FontSize="10" Content="Edit" Click="FreundEditieren"/>
+                            <TextBlock Grid.Column="0" Margin="5" FontSize="10" Text="{Binding Path=Nachname}" MouseLeftButtonDown="FreundEditieren"/>
+                            <TextBlock Grid.Column="1" Margin="5" FontSize="10" Text="{Binding Path=Vorname}" MouseLeftButtonDown="FreundEditieren"/>
+                            <TextBlock Grid.Column="2" Margin="5" FontSize="10" Text="{Binding Path=Geburtsdatum}" MouseLeftButtonDown="FreundEditieren"/>
+                            <TextBlock Grid.Column="3" Margin="5" FontSize="10" Text="{Binding Path=Adresse}" MouseLeftButtonDown="FreundEditieren"/>
                         </Grid>
                     </StackPanel>
                 </DataTemplate>
