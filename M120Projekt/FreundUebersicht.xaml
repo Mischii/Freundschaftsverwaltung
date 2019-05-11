@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:M120Projekt"
         mc:Ignorable="d"
-        MinWidth="350"
-        MinHeight="250"
-        Title="Freundschaftsverwaltung" Height="650" Width="800">
+        MinWidth="800"
+        MinHeight="600"
+        Title="Freundschaftsverwaltung" Height="700" Width="900">
 
     <Grid x:Name="Hauptansicht">
         <Grid.ColumnDefinitions>
