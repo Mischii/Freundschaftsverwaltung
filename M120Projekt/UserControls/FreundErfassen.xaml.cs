@@ -152,7 +152,8 @@ namespace M120Projekt
                 {
                     freundSpeichern.IsEnabled = true;
                 }
-                if((this.iGeburtsdatum.SelectedDate != null && this.iGeburtsdatum.SelectedDate > DateTime.Now )|| (this.iBefreundetSeit.SelectedDate != null && this.iBefreundetSeit.SelectedDate > DateTime.Now))
+                if((this.iGeburtsdatum.SelectedDate != null && this.iGeburtsdatum.SelectedDate > DateTime.Now ) 
+                    || (this.iBefreundetSeit.SelectedDate != null && this.iBefreundetSeit.SelectedDate > DateTime.Now))
                 {
                     freundSpeichern.IsEnabled = false;
                 }
@@ -160,7 +161,6 @@ namespace M120Projekt
                 {
                     freundSpeichern.IsEnabled = true;
                 }
-   
             }
             else
             {

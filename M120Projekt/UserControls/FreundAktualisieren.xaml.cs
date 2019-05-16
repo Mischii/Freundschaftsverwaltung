@@ -163,7 +163,15 @@ namespace M120Projekt
                 {
                     AenderungSpeichern.IsEnabled = true;
                 }
-
+                if ((this.uGeburtsdatum.SelectedDate != null && this.uGeburtsdatum.SelectedDate > DateTime.Now)
+                    || (this.uBefreundetSeit.SelectedDate != null && this.uBefreundetSeit.SelectedDate > DateTime.Now))
+                {
+                    AenderungSpeichern.IsEnabled = false;
+                }
+                else
+                {
+                    AenderungSpeichern.IsEnabled = true;
+                }
             }
             else
             {
