@@ -33,14 +33,17 @@ namespace M120Projekt
             iBeziehung.Items.Add("Verwante");
             iBeziehung.Items.Add("Kollege / Kollegin");
 
+            iGeburtsdatum.DisplayDateEnd = DateTime.Now;
+            iBefreundetSeit.DisplayDateEnd = DateTime.Now;
+
             //Name
-            this.iName.SetRegex(@"(^[A-Za-zÖÄÜÈÉöäüèé]{2,}$)");
+            this.iName.SetRegex(@"(^[A-Za-zÖÄÜÈÉöäüèé]{2,}[\s]*[A-Za-zÖÄÜÈÉöäüèé]*$)");
             this.iName.SetFehlerKommentar("min. 2 Buchstaben");
             this.iName.SetKorrekterKommentar("korrekt");
             this.iName.pflichtfeld = true;
 
             //Vorname
-            this.iVorname.SetRegex(@"(^[A-Za-zÖÄÜÈÉöäüèé]{2,}$)");
+            this.iVorname.SetRegex(@"(^[A-Za-zÖÄÜÈÉöäüèé]{2,}[\s]*[A-Za-zÖÄÜÈÉöäüèé]*$)");
             this.iVorname.SetFehlerKommentar("min. 2 Buchstaben");
             this.iVorname.SetKorrekterKommentar("korrekt");
             this.iVorname.pflichtfeld = true;
@@ -149,7 +152,15 @@ namespace M120Projekt
                 {
                     freundSpeichern.IsEnabled = true;
                 }
-
+                if((this.iGeburtsdatum.SelectedDate != null && this.iGeburtsdatum.SelectedDate > DateTime.Now )|| (this.iBefreundetSeit.SelectedDate != null && this.iBefreundetSeit.SelectedDate > DateTime.Now))
+                {
+                    freundSpeichern.IsEnabled = false;
+                }
+                else
+                {
+                    freundSpeichern.IsEnabled = true;
+                }
+   
             }
             else
             {

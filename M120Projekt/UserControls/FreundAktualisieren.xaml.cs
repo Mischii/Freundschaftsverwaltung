@@ -34,14 +34,17 @@ namespace M120Projekt
             uBeziehung.Items.Add("Verwante");
             uBeziehung.Items.Add("Kollege / Kollegin");
 
+            uGeburtsdatum.DisplayDateEnd = DateTime.Now;
+            uBefreundetSeit.DisplayDateEnd = DateTime.Now;
+
             //Name
-            this.iName.SetRegex(@"(^[A-Za-zÖÄÜÈÉöäüèé]{2,}$)");
+            this.iName.SetRegex(@"(^[A-Za-zÖÄÜÈÉöäüèé]{2,}[\s]*[A-Za-zÖÄÜÈÉöäüèé]*$)");
             this.iName.SetFehlerKommentar("min. 2 Buchstaben");
             this.iName.SetKorrekterKommentar("korrekt");
             this.iName.pflichtfeld = true;
 
             //Vorname
-            this.iVorname.SetRegex(@"(^[A-Za-zÖÄÜÈÉöäüèé]{2,}$)");
+            this.iVorname.SetRegex(@"(^[A-Za-zÖÄÜÈÉöäüèé]{2,}[\s]*[A-Za-zÖÄÜÈÉöäüèé]*$)");
             this.iVorname.SetFehlerKommentar("min. 2 Buchstaben");
             this.iVorname.SetKorrekterKommentar("korrekt");
             this.iVorname.pflichtfeld = true;
@@ -170,9 +173,21 @@ namespace M120Projekt
 
         private void freundLoeschen_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Der Freund wurde unwiederruflich gelöscht",
-                "Gelöscht", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-            Data.Freund.LesenID(aktuellerFreund).Loeschen();
+            MessageBoxResult ergebnis = MessageBox.Show("Wollen Sie diesen Freund wirklich löschen?",
+                    "Löschen",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
+
+            if (ergebnis == MessageBoxResult.Yes)
+            {
+                Data.Freund.LesenID(aktuellerFreund).Loeschen();
+                cc.Content = new AlleFreunde(cc);
+            }
+            
+        }
+
+        private void abbrechen_Click(object sender, RoutedEventArgs e)
+        {
             cc.Content = new AlleFreunde(cc);
         }
     }
