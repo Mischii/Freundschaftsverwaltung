@@ -46,5 +46,12 @@ namespace M120Projekt.UserControls
 
             cc.Content = new FreundAktualisieren(cc,freundID);
         }
+
+        private void Suchen_Click(object sender, RoutedEventArgs e)
+        {
+            var eintraege = Data.Global.context.Freund.ToList();
+            eintraege = eintraege.Where(x => $"{x.Nachname} {x.Vorname} {x.Adresse} {x.Geburtsdatum}".ToLower().Contains(sucheTextBox.Text.ToLower())).ToList();
+            alleFreunde.ItemsSource = eintraege;
+        }
     }
 }

@@ -24,9 +24,9 @@
         </Grid.RowDefinitions>
 
         <!-- Erste Reihe besteht aus der Suchbar -->
-        <TextBox Name="sucheTextBox" Grid.Column="1" Grid.Row="0" Margin="10" FontSize="16">Hier ihre suche eingeben</TextBox>
+        <TextBox Name="sucheTextBox" Grid.Column="1" Grid.Row="0" Margin="10" FontSize="16"/>
         <Label Name="sucheLable" Grid.Column="2" Grid.Row="0" Margin="10,10,242,10.5" FontSize="16" VerticalContentAlignment="Center">Suche</Label>
-        <Button Content="{StaticResource searchIcon}" Name="suchIcon" Grid.Column="2" Grid.Row="0" Margin="78,4,191,10.5" Height="50" BorderBrush="White" Background="White"/>
+        <Button Content="{StaticResource searchIcon}" Name="suchIcon" Grid.Column="2" Grid.Row="0" Margin="78,4,191,10.5" Height="50" BorderBrush="White" Background="White" Click="Suchen_Click"/>
 
         <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
             <Grid>
