@@ -39,42 +39,42 @@ namespace M120Projekt
             //Name
             this.iName.SetRegex(@"(^[A-Za-zÖÄÜÈÉöäüèé]{2,}[\s]*[A-Za-zÖÄÜÈÉöäüèé]*$)");
             this.iName.SetFehlerKommentar("min. 2 Buchstaben");
-            this.iName.SetKorrekterKommentar("korrekt");
+            this.iName.SetKorrekterKommentar("");
             this.iName.pflichtfeld = true;
 
             //Vorname
             this.iVorname.SetRegex(@"(^[A-Za-zÖÄÜÈÉöäüèé]{2,}[\s]*[A-Za-zÖÄÜÈÉöäüèé]*$)");
             this.iVorname.SetFehlerKommentar("min. 2 Buchstaben");
-            this.iVorname.SetKorrekterKommentar("korrekt");
+            this.iVorname.SetKorrekterKommentar("");
             this.iVorname.pflichtfeld = true;
 
             //Adresse
             this.iAdresse.SetRegex(@"(^[A-Za-zÖÄÜÈÉöäüèé]{2,}[\s]*[0-9]*$)");
             this.iAdresse.SetFehlerKommentar("Buchstaben, optional Zahl");
-            this.iAdresse.SetKorrekterKommentar("korrekt");
+            this.iAdresse.SetKorrekterKommentar("");
             this.iAdresse.pflichtfeld = true;
 
             //Plz
             this.iPlz.SetRegex(@"(^[0-9]{4}$)");
             this.iPlz.SetFehlerKommentar("vier Zahlen");
-            this.iPlz.SetKorrekterKommentar("korrekt");
+            this.iPlz.SetKorrekterKommentar("");
             this.iPlz.pflichtfeld = true;
 
             //Ort
             this.iOrt.SetRegex(@"(^[A-Za-zÖÄÜÈÉöäüèé]{2,}$)");
             this.iOrt.SetFehlerKommentar("min. 2 Buchstaben");
-            this.iOrt.SetKorrekterKommentar("korrekt");
+            this.iOrt.SetKorrekterKommentar("");
             this.iOrt.pflichtfeld = true;
 
             //Handynummer
             this.iHandynummer.SetRegex(@"(^[+]?[0-9]{0,2}[\s]*[0-9]{1,3}[\s]*[0-9]{1,3}[\s]*[0-9]{1,2}[\s]*[0-9]{1,2}$)");
             this.iHandynummer.SetFehlerKommentar("+, Leerschlag und Zahlen");
-            this.iHandynummer.SetKorrekterKommentar("korrekt");
+            this.iHandynummer.SetKorrekterKommentar("");
 
             //Email
             this.iEmail.SetRegex(@"(^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$)");
             this.iEmail.SetFehlerKommentar("gültige E-Mailadresse");
-            this.iEmail.SetKorrekterKommentar("korrekt");
+            this.iEmail.SetKorrekterKommentar("");
 
             freundSpeichern.IsEnabled = false;
 
@@ -153,6 +153,43 @@ namespace M120Projekt
                     freundSpeichern.IsEnabled = true;
                 }
                 if((this.iGeburtsdatum.SelectedDate != null && this.iGeburtsdatum.SelectedDate > DateTime.Now ) 
+                    || (this.iBefreundetSeit.SelectedDate != null && this.iBefreundetSeit.SelectedDate > DateTime.Now))
+                {
+                    freundSpeichern.IsEnabled = false;
+                }
+                else
+                {
+                    freundSpeichern.IsEnabled = true;
+                }
+            }
+            else
+            {
+                freundSpeichern.IsEnabled = false;
+            }
+        }
+
+        private void UserControllChanged(object sender, EventArgs e)
+        {
+            if (this.iVorname.Ueberpruefung() && this.iName.Ueberpruefung() && this.iAdresse.Ueberpruefung()
+                && this.iPlz.Ueberpruefung() && this.iOrt.Ueberpruefung())
+            {
+                if (this.iHandynummer.GetEingabe() != "")
+                {
+                    freundSpeichern.IsEnabled = this.iHandynummer.Ueberpruefung();
+                }
+                else
+                {
+                    freundSpeichern.IsEnabled = true;
+                }
+                if (this.iEmail.GetEingabe() != "")
+                {
+                    freundSpeichern.IsEnabled = this.iEmail.Ueberpruefung();
+                }
+                else
+                {
+                    freundSpeichern.IsEnabled = true;
+                }
+                if ((this.iGeburtsdatum.SelectedDate != null && this.iGeburtsdatum.SelectedDate > DateTime.Now)
                     || (this.iBefreundetSeit.SelectedDate != null && this.iBefreundetSeit.SelectedDate > DateTime.Now))
                 {
                     freundSpeichern.IsEnabled = false;

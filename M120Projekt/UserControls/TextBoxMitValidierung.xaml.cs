@@ -21,6 +21,7 @@ namespace M120Projekt.UserControls
     /// </summary>
     public partial class TextBoxMitValidierung : UserControl
     {
+        public event EventHandler EingabeTextChanged;
 
         public static readonly SolidColorBrush fehlerFarbe = new SolidColorBrush(Colors.Red);
         public static readonly SolidColorBrush korrekteFarbe = new SolidColorBrush(Colors.Green);
@@ -82,8 +83,17 @@ namespace M120Projekt.UserControls
             }
         }
 
+        /*private void Eingabe_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.Ueberpruefung();
+        }*/
+
         private void Eingabe_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (EingabeTextChanged != null)
+            {
+                EingabeTextChanged(this, EventArgs.Empty);
+            }
             this.Ueberpruefung();
         }
 

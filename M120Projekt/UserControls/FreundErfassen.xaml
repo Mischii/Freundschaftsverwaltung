@@ -43,26 +43,26 @@
         <Label Name="email" Grid.Column="1" Grid.Row="8">Email:</Label>
         <Label Name="beziehungsstatus" Grid.Column="1" Grid.Row="9">Beziehungsstatus:</Label>
         <Label Name="beziehung" Grid.Column="1" Grid.Row="10">Beziehung:</Label>
-        <Label Name="befreundetSeit" Grid.Column="1" Grid.Row="11">Befraundet seid:</Label>
+        <Label Name="befreundetSeit" Grid.Column="1" Grid.Row="11">Befreundet seid:</Label>
 
-        <UserControls:TextBoxMitValidierung x:Name="iName" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="3" Margin="5" LostFocus="UberpruefeValidierung"/>
-        <UserControls:TextBoxMitValidierung x:Name="iVorname" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" Margin="5" LostFocus="UberpruefeValidierung"/>
-        <UserControls:TextBoxMitValidierung x:Name="iAdresse" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" Margin="5" LostFocus="UberpruefeValidierung"/>
-        <UserControls:TextBoxMitValidierung x:Name="iPlz" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" Margin="5" LostFocus="UberpruefeValidierung"/>
-        <UserControls:TextBoxMitValidierung x:Name="iOrt" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="3" Margin="5" LostFocus="UberpruefeValidierung" />
+        <UserControls:TextBoxMitValidierung x:Name="iName" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="3" Margin="5" EingabeTextChanged="UserControllChanged"/>
+        <UserControls:TextBoxMitValidierung x:Name="iVorname" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" Margin="5" EingabeTextChanged="UserControllChanged"/>
+        <UserControls:TextBoxMitValidierung x:Name="iAdresse" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" Margin="5" EingabeTextChanged="UserControllChanged"/>
+        <UserControls:TextBoxMitValidierung x:Name="iPlz" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" Margin="5" EingabeTextChanged="UserControllChanged"/>
+        <UserControls:TextBoxMitValidierung x:Name="iOrt" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="3" Margin="5" EingabeTextChanged="UserControllChanged" />
 
-        <DatePicker Name="iGeburtsdatum" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2" Margin="28,2,173,2.5" LostFocus="UberpruefeValidierung"></DatePicker>
+        <DatePicker Name="iGeburtsdatum" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2" Margin="28,2,173,2.5" SelectedDateChanged="UberpruefeValidierung"></DatePicker>
 
-        <UserControls:TextBoxMitValidierung x:Name="iHandynummer" Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="3" Margin="5" LostFocus="UberpruefeValidierung"/>
-        <UserControls:TextBoxMitValidierung x:Name="iEmail" Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="3" Margin="5" LostFocus="UberpruefeValidierung"/>
+        <UserControls:TextBoxMitValidierung x:Name="iHandynummer" Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="3" Margin="5" EingabeTextChanged="UserControllChanged"/>
+        <UserControls:TextBoxMitValidierung x:Name="iEmail" Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="3" Margin="5" EingabeTextChanged="UserControllChanged"/>
 
         <RadioButton Name="iVergeben" GroupName="beziehungsStatus" Grid.Column="2" Grid.Row="9" Margin="28,5,96,4.5" >Vergeben</RadioButton>
         <RadioButton Name="iSingle" GroupName="beziehungsStatus" Grid.Column="2" Grid.Row="9" Margin="140,5,173,4.5" Grid.ColumnSpan="2" >Single</RadioButton>
         <ComboBox Name="iBeziehung" Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="2" Margin="28,2,173,2.5"></ComboBox>
-        <DatePicker Name="iBefreundetSeit" Grid.Column="2" Grid.Row="11" Grid.ColumnSpan="2" Margin="28,2,173,2.5" LostFocus="UberpruefeValidierung"></DatePicker>
+        <DatePicker Name="iBefreundetSeit" Grid.Column="2" Grid.Row="11" Grid.ColumnSpan="2" Margin="28,2,173,2.5" SelectedDateChanged="UberpruefeValidierung"></DatePicker>
 
         <!-- Fusszeile besteht aus den Buttons zum abbrechen und speichern eines Freunde -->
-        <Button Name="abrechen" Grid.Column="0" Grid.Row="12" Grid.ColumnSpan="2" Width="100" Height="20" Click="Abbrechen_Click" >abbrechen</Button>
+        <Button Name="abrechen" Grid.Column="0" Grid.Row="12" Grid.ColumnSpan="2" Width="100" Height="20" Click="Abbrechen_Click" >Abbrechen</Button>
         <Button Name="freundSpeichern" Grid.Column="2" Grid.Row="12" Grid.ColumnSpan="2" Width="120" Height="20" Click="FreundSpeichern_Click" >Freund speichern</Button>
 
     </Grid>
